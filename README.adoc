@@ -42,7 +42,7 @@ from record_locator.record_locator import RecordLocator
 
 rl = RecordLocator()
 encoded_id = rl.encode(100)
-decoded_id = rl.decode("5G")
+decoded_id = rl.decode("6R")
 
 print (encoded_id)
 print (decoded_id)
@@ -67,6 +67,37 @@ decoded_id = rl.decode("IE")
 print (encoded_id)
 print (decoded_id)
 ----
+
+=== Record locator with checksum
+
+
+[source,python]
+----
+from record_locator.record_locator import RecordLocator
+
+
+rl = RecordLocator(has_check_digit=True)
+encoded_id = rl.encode(100)
+decoded_id = rl.decode("6RK")
+
+print (encoded_id)
+print (decoded_id)
+----
+
+The checksum is generated using the length of the character set and the generated record string. Each character in the generated string is transformed into its integer representation (zero-based index position in character set) and multiplied by its position (non zero-based index) in the ID string. All this values are added to a checksum.
+
+Checksum for *6R* = 3 * 1 + 19 * 2 = 41
+
+    * *6* is the 4th character (index = 3) in the default set
+    * *R* is the 20th character (index = 20) in the default set
+
+The final step is to run a modulo operation on the checksum to assign a character from the character set:
+
+Checksum for *6R* = 41 % 27 = 14
+
+Looking up index 14 in the character set gives: *K*
+
+The record locator string including a check digit for the value *100* is: *6RK*
 
 
 == Tests
