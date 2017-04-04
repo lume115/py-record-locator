@@ -13,11 +13,11 @@ class TestRecordLocator(unittest.TestCase):
 
     def test_default_record_locator(self):
         rl = RecordLocator()
-        self.assertEqual("5G", rl.encode(100))
-        self.assertEqual(100, rl.decode("5G"))
-        self.assertEqual("ZNYE7", rl.encode(20290290))
+        self.assertEqual("6R", rl.encode(100))
+        self.assertEqual(100, rl.decode("6R"))
+        self.assertEqual("3G7W3A", rl.encode(20290290))
         self.assertTrue(rl.encode(20290290).isupper())
-        self.assertEqual(20290290, rl.decode("ZNYE7"))
+        self.assertEqual(20290290, rl.decode("3G7W3A"))
         self.assertEqual(20290290, rl.decode(rl.encode(20290290)))
 
     def test_custom_record_locator(self):

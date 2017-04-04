@@ -4,7 +4,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-DEFAULT_BASE_CHARACTERS = "23456789ACDEFGHJKLMNPRTUVWXYZ"
+DEFAULT_BASE_CHARACTERS = "234679ACDEFGHJKLMNPRTUVWXYZ"
 
 
 class RecordLocator:

@@ -19,17 +19,17 @@ Some characters are not used in record locators to avoid confusion with others:
 
 Both columns have been removed from the character set. This leaves the following characters for code generation:
 
-*23456789ACDEFGHJKLMNPRTUVWXYZ*
+*234679ACDEFGHJKLMNPRTUVWXYZ*
 
-So basically this makes it a *Base29* encoding.
+So basically this makes it a *Base27* encoding.
 
 
 == Examples
 
 Standard (Base29) record locator:
 
-* Integer `100` encodes to `5G`
-* Integer `20290290` encodes to `ZNYE7`
+* Integer `100` encodes to `6R`
+* Integer `20290290` encodes to `3G7W3A`
 
 == Usage
 
