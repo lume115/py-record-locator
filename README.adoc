@@ -89,7 +89,7 @@ The checksum is generated using the length of the character set and the generate
 Checksum for *6R* = 3 * 1 + 19 * 2 = 41
 
     * *6* is the 4th character (index = 3) in the default set
-    * *R* is the 20th character (index = 20) in the default set
+    * *R* is the 20th character (index = 19) in the default set
 
 The final step is to run a modulo operation on the checksum to assign a character from the character set:
 
