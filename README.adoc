@@ -1,0 +1,74 @@
+= Record Locator
+
+== What is it?
+
+A record locator provides human-readable alphanumeric representations of numeric IDs (i.e. database primary keys).
+A good example is the _Passenger name record_ (aka Confirmation code, aka Booking code, etc.) used by airlines.
+
+Some characters are not used in record locators to avoid confusion with others:
+
+[options="header"]
+|=======================
+|Character| similar characters
+|B | 8 (eight)
+|S | 5 (five)
+|Q | letter "O"
+|0 (zero) | letter "O"
+|1 (one)   | letter "I"
+|=======================
+
+Both columns have been removed from the character set. This leaves the following characters for code generation:
+
+*23456789ACDEFGHJKLMNPRTUVWXYZ*
+
+So basically this makes it a *Base29* encoding.
+
+
+== Examples
+
+Standard (Base29) record locator:
+
+* Integer `100` encodes to `5G`
+* Integer `20290290` encodes to `ZNYE7`
+
+== Usage
+
+=== Default record locator
+
+[source,python]
+----
+from record_locator.record_locator import RecordLocator
+
+
+rl = RecordLocator()
+encoded_id = rl.encode(100)
+decoded_id = rl.decode("5G")
+
+print (encoded_id)
+print (decoded_id)
+----
+
+=== Custom record locator
+
+Just construct the `RecordLocator` with `base_characters` set containing all characters needed.
+
+Below an example generating ids only containing the following characters: *ABCDEFGHIJKL*
+
+
+[source,python]
+----
+from record_locator.record_locator import RecordLocator
+
+
+rl = RecordLocator(base_characters="ABCDEFGHIJKL")
+encoded_id = rl.encode(100)
+decoded_id = rl.decode("IE")
+
+print (encoded_id)
+print (decoded_id)
+----
+
+
+== Tests
+
+Unit tests can be found in `record_locator/test_record_locator.py`
